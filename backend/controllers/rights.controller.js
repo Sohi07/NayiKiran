@@ -143,7 +143,7 @@ export const rightsController = async (req, res) => {
 
 dotenv.config();
 
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
 const API_KEY = process.env.RIGHTS_API_KEY;
 
 
@@ -167,8 +167,13 @@ const askRights = async (req, res) => {
         const newConversationHistory = [...conversationHistory, { role: "user", text: therapyPrompt }];
 
         // Make the API call
+        const fullUrl = `${GEMINI_API_URL}?key=${API_KEY}`;
+        console.log("Full API URL:", fullUrl);
+        console.log("API KEY exists:", !!API_KEY);
+        console.log("API KEY length:", API_KEY?.length);
+        
         const response = await axios.post(
-            `${GEMINI_API_URL}?key=${API_KEY}`,
+            fullUrl,
             {
                 contents: newConversationHistory.map(message => ({ role: message.role, parts: [{ text: message.text }] }))
             }
@@ -188,7 +193,9 @@ const askRights = async (req, res) => {
         }
     } catch (error) {
         console.error("Error communicating with Gemini API:", error.message);
-        res.status(500).json({ error: "Error communicating with Gemini API" });
+        console.error("Full error:", error);
+        console.error("API KEY being used:", API_KEY ? "exists" : "missing");
+        res.status(500).json({ error: "Error communicating with Gemini API", details: error.message });
     }
 };
 
