@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllLegalDefenseModules, getModulesByCategory, getEmergencyHelplines, getPoliceHarassmentSteps } from '../utils/legalDefenseApi';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 // Mock data functions
 const getMockData = () => [
@@ -213,7 +215,9 @@ const LegalDefense = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="min-h-screen bg-gray-50">
+            <Navbar />
+            <div className="container mx-auto px-4 py-8">
             <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">
                 Practical Legal Defense Course
             </h1>
@@ -307,6 +311,8 @@ const LegalDefense = () => {
                     <p className="text-gray-500 text-lg">No modules found for this category.</p>
                 </div>
             )}
+        </div>
+            <Footer />
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getSchoolEnrollmentGuide } from '../utils/childcareProtectionApi';
 import RTEEligibilityChecker from './RTEEligibilityChecker';
+import DocumentChecklist from './DocumentChecklist';
 
 const SchoolEnrollment = () => {
     const [enrollmentData, setEnrollmentData] = useState([]);
@@ -246,44 +247,9 @@ const SchoolEnrollment = () => {
                 </div>
             )}
 
-            {/* Document Checklist */}
+            {/* Enhanced Document Checklist */}
             {showDocumentChecklist && (
-                <div className="bg-white border-2 border-gray-200 rounded-lg p-6 mb-8">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">Required Documents Checklist</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 className="font-semibold text-gray-700 mb-3">Essential Documents:</h4>
-                            <div className="space-y-2">
-                                {['Birth Certificate', 'Address Proof', 'Income Certificate', 'Aadhar Card'].map((doc, index) => (
-                                    <label key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                        <input type="checkbox" className="w-5 h-5 text-blue-600" />
-                                        <span className="text-gray-700">{doc}</span>
-                                    </label>
-                                ))}
-                            </div>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold text-gray-700 mb-3">Category-Specific Documents:</h4>
-                            <div className="space-y-2">
-                                {['Caste Certificate (SC/ST/OBC)', 'Disability Certificate (if applicable)', 'BPL Certificate', 'Ration Card'].map((doc, index) => (
-                                    <label key={index} className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                                        <input type="checkbox" className="w-5 h-5 text-blue-600" />
-                                        <span className="text-gray-700">{doc}</span>
-                                    </label>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                        <h4 className="font-semibold text-blue-800 mb-2">How to Get Documents:</h4>
-                        <ul className="space-y-1 text-blue-700 text-sm">
-                            <li>Birth Certificate: Municipal office or hospital where born</li>
-                            <li>Income Certificate: Tehsil office with income proof</li>
-                            <li>Caste Certificate: District magistrate office</li>
-                            <li>Disability Certificate: Government hospital with medical certificate</li>
-                        </ul>
-                    </div>
-                </div>
+                <DocumentChecklist />
             )}
 
             {/* Step-by-Step Process */}

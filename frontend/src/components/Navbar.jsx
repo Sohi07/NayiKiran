@@ -119,12 +119,15 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import useLogout from "../hooks/useLogout";
 import { useAuthContext } from "../context/AuthContext";
 import image from "../assets/image.png";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const { logout } = useLogout();
   const { authUser } = useAuthContext();
 
@@ -144,6 +147,7 @@ const Navbar = () => {
             <p className="font-bold text-purple-900 text-lg">For Emergency</p>
             <span className="text-purple-800 text-base">112</span>
           </div>
+          <LanguageSwitcher />
           {authUser ? (
             <button
               onClick={logout}
@@ -167,34 +171,34 @@ const Navbar = () => {
           <nav>
             <ul className="flex space-x-8">
               <li>
-                <Link to="/" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Home</Link>
+                <Link to="/" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('navigation.home')}</Link>
               </li>
               <li>
-                <Link to="/legal" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Legal Rights</Link>
+                <Link to="/legal" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('legal.title')}</Link>
               </li>
               <li>
-                <Link to="/legal-defense" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Legal Defense Course</Link>
+                <Link to="/legal-defense" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('legal.legalDefense')}</Link>
               </li>
               <li>
-                <Link to="/childcare-protection" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Childcare Protection</Link>
+                <Link to="/childcare-protection" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('childcare.title')}</Link>
               </li>
               <li>
                 <Link to="/chat" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Mano Sathi (Chatbot)</Link>
               </li>
               <li>
-                <Link to="/forum" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Discussion Forum</Link>
+                <Link to="/forum" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('community.title')}</Link>
               </li>
               <li>
                 <Link to="/skill" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Skill Development</Link>
               </li>
-              <li>
+                            <li>
                 <Link to="/story" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Success Story</Link>
               </li>
             </ul>
           </nav>
           <div className="flex items-center space-x-2">
   <a
-    href="https://ncw.nic.in/"
+    href="https://www.ncw.gov.in/"
     target="_blank"
     rel="noopener noreferrer"
     className="flex items-center space-x-2 px-5 py-2 bg-pink-400 text-white font-semibold rounded-lg shadow-md hover:bg-pink-600 hover:scale-105 transition duration-200"

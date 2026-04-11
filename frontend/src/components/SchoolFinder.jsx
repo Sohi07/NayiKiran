@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import GooglePlacesService from '../services/googlePlacesService';
+import OpenStreetMapService from '../services/openStreetMapService';
 
 const SchoolFinder = () => {
     const [schools, setSchools] = useState([]);
@@ -15,7 +15,7 @@ const SchoolFinder = () => {
     const [loading, setLoading] = useState(false);
     const [userLocation, setUserLocation] = useState(null);
     const [locationError, setLocationError] = useState(null);
-    const [googlePlacesService] = useState(() => new GooglePlacesService());
+    const [openStreetMapService] = useState(() => new OpenStreetMapService());
 
     // Get user's location on component mount
     useEffect(() => {
@@ -32,7 +32,7 @@ const SchoolFinder = () => {
     const getUserLocation = async () => {
         try {
             setLoading(true);
-            const location = await googlePlacesService.getCurrentLocation();
+            const location = await openStreetMapService.getCurrentLocation();
             setUserLocation(location);
             setLocationError(null);
         } catch (error) {
@@ -51,24 +51,10 @@ const SchoolFinder = () => {
         try {
             setLoading(true);
             const radius = filters.distance * 1000; // Convert km to meters
-            const schoolsData = await googlePlacesService.searchSchools(userLocation, radius, {
-                language: 'en',
-                region: 'in'
-            });
+            const schoolsData = await openStreetMapService.searchSchools(userLocation, radius);
 
-            // Calculate distances from user location
-            const schoolsWithDistance = schoolsData.map(school => ({
-                ...school,
-                distance: googlePlacesService.calculateDistance(
-                    userLocation.lat,
-                    userLocation.lng,
-                    school.coordinates.lat,
-                    school.coordinates.lng
-                )
-            }));
-
-            setSchools(schoolsWithDistance);
-            setFilteredSchools(schoolsWithDistance);
+            setSchools(schoolsData);
+            setFilteredSchools(schoolsData);
         } catch (error) {
             console.error('Error fetching schools:', error);
             // Fallback to static data if API fails

@@ -16,26 +16,20 @@ const router = express.Router();
 // Get all modules
 router.get("/", getAllChildcareProtectionModules);
 
+// Get specific routes first (before parameterized routes)
+router.get("/school-enrollment", getSchoolEnrollmentGuide);
+router.get("/government-schemes", getGovernmentSchemes);
+router.get("/child-rights", getChildRightsFramework);
+router.get("/exploitation-prevention", getExploitationPrevention);
+
 // Get modules by category
 router.get("/category/:category", getModulesByCategory);
 
-// Get specific module by ID
-router.get("/:id", getModuleById);
-
 // Search modules
-router.get("/search/:query", searchModules);
+router.get("/search", searchModules);
 
-// Get school enrollment guide
-router.get("/school-enrollment", getSchoolEnrollmentGuide);
-
-// Get government schemes
-router.get("/government-schemes", getGovernmentSchemes);
-
-// Get child rights framework
-router.get("/child-rights", getChildRightsFramework);
-
-// Get exploitation prevention resources
-router.get("/exploitation-prevention", getExploitationPrevention);
+// Get specific module by ID (must be last)
+router.get("/:id", getModuleById);
 
 // Create new module (admin only)
 router.post("/", createChildcareProtectionModule);

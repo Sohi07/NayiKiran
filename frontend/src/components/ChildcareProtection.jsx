@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { 
     getAllChildcareProtectionModules, 
     getModulesByCategory, 
@@ -9,6 +10,7 @@ import {
 } from '../utils/childcareProtectionApi';
 import RTEEligibilityChecker from './RTEEligibilityChecker';
 import SchoolFinder from './SchoolFinder';
+import ChildProtectionDocuments from './ChildProtectionDocuments';
 
 // Mock data functions
 const getMockChildcareData = () => [
@@ -580,6 +582,8 @@ const ChildcareProtection = () => {
         }
     };
 
+    const { t } = useTranslation();
+
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-screen">
@@ -591,12 +595,12 @@ const ChildcareProtection = () => {
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-4xl font-bold text-center mb-8 text-purple-800">
-                Protecting Next Generation (Childcare)
+                {t('childcare.title')}
             </h1>
 
             {/* Emergency Helplines Section */}
             <div className="mb-8 bg-red-50 border-2 border-red-200 rounded-lg p-6">
-                <h2 className="text-2xl font-bold text-red-800 mb-4">Emergency Child Helplines</h2>
+                <h2 className="text-2xl font-bold text-red-800 mb-4">{t('childcare.emergencyHelplines')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {emergencyHelplines.map((helpline, index) => (
                         <div key={index} className="bg-white p-4 rounded-lg shadow-md border-l-4 border-red-500">
@@ -626,6 +630,9 @@ const ChildcareProtection = () => {
                     ))}
                 </select>
             </div>
+
+            {/* Child Protection Documents Section */}
+            <ChildProtectionDocuments />
 
             {/* Quick Actions Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

@@ -12,6 +12,8 @@ import rightsRoutes from "./routes/rights.routes.js";
 import successStoryRoutes from "./routes/story.routes.js";
 import legalDefenseRoutes from "./routes/legalDefense.routes.js";
 import childcareProtectionRoutes from "./routes/childcareProtection.routes.js";
+import schoolRoutes from "./routes/school.routes.js";
+import documentRoutes from "./routes/document.routes.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
 
@@ -31,6 +33,8 @@ app.use("/api/rights",rightsRoutes);
 app.use("/api/success-stories", successStoryRoutes);
 app.use("/api/legal-defense", legalDefenseRoutes);
 app.use("/api/childcare-protection", childcareProtectionRoutes);
+app.use("/api/schools", schoolRoutes);
+app.use("/api/documents", documentRoutes);
 
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
