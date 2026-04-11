@@ -136,12 +136,12 @@
 //             {/* Main Content */}
 //             <div className="flex-grow flex justify-center items-center px-6 py-12">
 //                 <div className="card w-full max-w-3xl bg-white shadow-lg rounded-lg overflow-hidden p-6">
-                    
+
 //                     {/* 3D Title with Three.js */}
 //                     <h2 className="text-xl font-bold text-center py-4 text-purple-700">
 //                         💬 Mano Sathi
 //                     </h2>
-                 
+
 
 //                     <div className="h-96 overflow-y-auto p-4 space-y-3 bg-purple-50 rounded-lg shadow-inner">
 //                         {conversation.map((msg, index) => (
@@ -225,16 +225,7 @@ const Chat = () => {
       .join("\n• "); // Add bullet points
   };
 
-  // Loading the font
-  const fontRef = useRef(null);
-  const [font, setFont] = useState(null);
 
-  useEffect(() => {
-    const loader = new FontLoader();
-    loader.load("/path/to/font.json", (loadedFont) => {
-      setFont(loadedFont);
-    });
-  }, []);
 
   return (
     <div className="relative z-0 bg-pink-100 min-h-screen flex flex-col">
@@ -273,9 +264,8 @@ const Chat = () => {
                 transition={{ duration: 0.3 }}
               >
                 <div
-                  className={`p-3 rounded-lg max-w-[75%] whitespace-pre-line shadow-lg ${
-                    msg.role === "user" ? "bg-purple-300 text-white" : "bg-green-100 text-gray-800"
-                  }`}
+                  className={`p-3 rounded-lg max-w-[75%] whitespace-pre-line shadow-lg ${msg.role === "user" ? "bg-purple-300 text-white" : "bg-green-100 text-gray-800"
+                    }`}
                 >
                   {msg.text}
                 </div>
@@ -316,8 +306,8 @@ const Chat = () => {
         </motion.div>
       </div>
       <div className="w-full relative z-0">
-                <Footer />
-        </div>
+        <Footer />
+      </div>
     </div>
   );
 };

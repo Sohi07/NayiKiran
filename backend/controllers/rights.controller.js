@@ -175,7 +175,7 @@ const askRights = async (req, res) => {
         const response = await axios.post(
             fullUrl,
             {
-                contents: newConversationHistory.map(message => ({ role: message.role, parts: [{ text: message.text }] }))
+                contents: newConversationHistory.map(message => ({ role: message.role === "assistant" ? "model" : message.role, parts: [{ text: message.text }] }))
             }
         );
 

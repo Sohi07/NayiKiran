@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent";
 const API_KEY = process.env.GEMINI_API_KEY;
 
 
@@ -20,8 +20,9 @@ const formatResponse = (text) => {
 
 
 
-const askRights = async (req, res) => {
+const askGemini = async (req, res) => {
     try {
+        const apiKeyToUse = process.env.GEMINI_API_KEY;
         const { userMessage, conversationHistory = [] } = req.body;  // Get conversation history from request body
         const therapyPrompt = "Provide a concise response in 3-5 short points . Keep it simple and clear. Use a numbered list format. Provide emotional support and guidance: " + userMessage +"give points first in hindi then in english language";
 
@@ -30,9 +31,9 @@ const askRights = async (req, res) => {
 
         // Make the API call
         const response = await axios.post(
-            `${GEMINI_API_URL}?key=${API_KEY}`,
+            `${GEMINI_API_URL}?key=${apiKeyToUse}`,
             {
-                contents: newConversationHistory.map(message => ({ role: message.role, parts: [{ text: message.text }] }))
+                contents: newConversationHistory.map(message => ({ role: message.role === "assistant" ? "model" : message.role, parts: [{ text: message.text }] }))
             }
         );
 
@@ -49,12 +50,18 @@ const askRights = async (req, res) => {
             res.json({ reply: "No meaningful response received from Gemini.", conversationHistory: newConversationHistory });
         }
     } catch (error) {
-        console.error("Error communicating with Gemini API:", error.message);
-        res.status(500).json({ error: "Error communicating with Gemini API" });
+        console.error("API KEY loaded properly:", !!process.env.GEMINI_API_KEY);
+        console.error("Axios Error response:", error.response?.data || error.message);
+        
+        let details = "Error communicating with Gemini API";
+        if (error.response && error.response.data && error.response.data.error) {
+            details = error.response.data.error.message || JSON.stringify(error.response.data);
+        }
+        res.status(500).json({ error: "Error communicating with Gemini API", details });
     }
 };
 
-export default askRights;
+export default askGemini;
 
 
 
