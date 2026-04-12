@@ -15,7 +15,7 @@ const Login = () => {
     <div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
         <div className='w-full p-6 rounded-lg shadow-md bg-gradient-to-br  from-purple-200 via-pink-100 to-pink-200 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10'>
             <h1 className='text-3xl font-semibold text-center text-pink-400 '>Login
-                <span className='text-purple-800'> Ujjwal Udan</span>
+                <span className='text-purple-800'> Nayi Kiran</span>
             </h1>
 
             <form onSubmit={handleSubmit}>
