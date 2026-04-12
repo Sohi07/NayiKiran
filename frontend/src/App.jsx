@@ -23,6 +23,7 @@ import ChildcareSchools from './pages/ChildcareSchools';
 import ChildcareDocuments from './pages/ChildcareDocuments';
 import ChildcareApply from './pages/ChildcareApply';
 import JobDiscovery from './pages/JobDiscovery';
+import VoiceAssistant from './components/VoiceAssistant'; // Added Voice Assistant
 
 const App = () => {
   const { authUser } = useAuthContext();
@@ -62,6 +63,9 @@ const App = () => {
         <Route path="/signup" element={authUser ? <Navigate to="/" /> : <Signup />} />
       </Routes>
       <Toaster />
+      
+      {/* Global Voice Assistant Component */}
+      <VoiceAssistant />
     </div>
   );
 };
