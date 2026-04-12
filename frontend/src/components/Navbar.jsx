@@ -95,7 +95,7 @@
 //                 <Link to="/skill" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Skill Development</Link>
 //               </li>
 //               <li>
-//                 <Link to="/story" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Success Story</Link>
+//                 <Link to="/story" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Success Stories</Link>
 //               </li>
 //             </ul>
 //           </nav>
