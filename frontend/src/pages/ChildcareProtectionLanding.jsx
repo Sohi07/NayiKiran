@@ -153,7 +153,7 @@ const ChildcareProtectionLanding = () => {
             return (
               <div
                 key={section.id}
-                className={`${colors.bg} border-2 ${colors.border} rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
+                className={`${colors.bg} border-2 ${colors.border} rounded-xl p-6 hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex flex-col h-full`}
               >
                 <div className="flex items-center mb-4">
                   <div className={`p-3 rounded-lg ${colors.bg} mr-4`}>
@@ -170,7 +170,7 @@ const ChildcareProtectionLanding = () => {
                 </div>
 
                 {/* Features List */}
-                <div className="mb-6">
+                <div className="mb-6 flex-grow">
                   <ul className="space-y-2">
                     {section.features.map((feature, index) => (
                       <li key={index} className="flex items-center">
@@ -182,13 +182,15 @@ const ChildcareProtectionLanding = () => {
                 </div>
 
                 {/* Action Button */}
-                <Link
-                  to={section.route}
-                  className={`flex items-center justify-center w-full px-6 py-3 ${colors.button} text-white font-semibold rounded-lg transition-colors`}
-                >
-                  Get Started
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
+                <div className="mt-auto">
+                  <Link
+                    to={section.route}
+                    className={`flex items-center justify-center w-full px-6 py-3 ${colors.button} text-white font-semibold rounded-lg transition-colors`}
+                  >
+                    Get Started
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </div>
               </div>
             );
           })}
