@@ -174,25 +174,25 @@ const Navbar = () => {
                 <Link to="/" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('navigation.home')}</Link>
               </li>
               <li>
+                <Link to="/skill" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Skill Development</Link>
+              </li>
+              <li>
+                <Link to="/job-discovery" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Job Discovery</Link>
+              </li>
+              <li>
                 <Link to="/legal" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('legal.title')}</Link>
-              </li>
-              <li>
-                <Link to="/childcare-protection" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('childcare.title')}</Link>
-              </li>
-              <li>
-                <Link to="/chat" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Mano Sathi (Chatbot)</Link>
               </li>
               <li>
                 <Link to="/forum" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('community.title')}</Link>
               </li>
               <li>
-                <Link to="/skill" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Skill Development</Link>
-              </li>
-                            <li>
-                <Link to="/story" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Success Story</Link>
+                <Link to="/chat" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Mano Sathi (Chatbot)</Link>
               </li>
               <li>
-                <Link to="/job-discovery" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Job Discovery</Link>
+                <Link to="/childcare-protection" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">{t('childcare.title')}</Link>
+              </li>
+              <li>
+                <Link to="/story" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Success Stories</Link>
               </li>
             </ul>
           </nav>
