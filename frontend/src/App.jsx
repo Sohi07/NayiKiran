@@ -26,6 +26,7 @@ import ChildcareEligibility from './pages/ChildcareEligibility';
 import ChildcareSchools from './pages/ChildcareSchools';
 import ChildcareDocuments from './pages/ChildcareDocuments';
 import ChildcareApply from './pages/ChildcareApply';
+import JobDiscovery from './pages/JobDiscovery';
 
 const App = () => {
   const { authUser } = useAuthContext();
@@ -56,6 +57,9 @@ const App = () => {
         <Route path="/childcare-protection/schools" element={authUser ? <ChildcareSchools /> : <Navigate to="/login" />} />
         <Route path="/childcare-protection/documents" element={authUser ? <ChildcareDocuments /> : <Navigate to="/login" />} />
         <Route path="/childcare-protection/apply" element={authUser ? <ChildcareApply /> : <Navigate to="/login" />} />
+        
+        {/* Job Discovery Routes */}
+        <Route path="/job-discovery" element={authUser ? <JobDiscovery /> : <Navigate to="/login" />} />
         {/* Legacy Routes - Keep for backward compatibility */}
         <Route path="/school-enrollment" element={authUser ? <SchoolEnrollment /> : <Navigate to="/login" />} />
         <Route path="/government-schemes" element={authUser ? <GovernmentSchemes /> : <Navigate to="/login" />} />

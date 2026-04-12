@@ -194,6 +194,9 @@ const Navbar = () => {
                             <li>
                 <Link to="/story" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Success Story</Link>
               </li>
+              <li>
+                <Link to="/job-discovery" className="text-lg font-semibold hover:text-gray-300 hover:scale-110 transition duration-200">Job Discovery</Link>
+              </li>
             </ul>
           </nav>
           <div className="flex items-center space-x-2">
