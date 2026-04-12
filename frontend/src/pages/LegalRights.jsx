@@ -91,6 +91,7 @@
 
 
 import React, { useEffect, useState } from "react";
+import { speak } from "../utils/speech";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -147,17 +148,35 @@ const LegalRights = () => {
                                     whileHover={{ scale: 1.1, rotate: 2 }}
                                     onClick={() => toggleCard(index)}
                                 >
-                                    <h3 className="text-lg font-semibold text-purple-600">{right.title}</h3>
-                                    <p className="text-gray-700 mt-2">{right.description.slice(0, 100)}...</p>
+                                                                        <div className="flex items-center">
+                                                                            <h3 className="text-lg font-semibold text-purple-600">{right.title}</h3>
+                                                                            <button
+                                                                                className="ml-2 text-purple-700 hover:text-purple-900 text-xl align-middle"
+                                                                                onClick={() => speak(right.description, 'en-IN')}
+                                                                                aria-label={`Listen to ${right.title}`}
+                                                                            >
+                                                                                🔊
+                                                                            </button>
+                                                                        </div>
+                                                                        <p className="text-gray-700 mt-2">{right.description.slice(0, 100)}...</p>
                                     
 
                                     {/* Expandable content */}
-                                    {expandedIndex === index && (
-                                        <div className="mt-4">
-                                            <h3 className="text-lg font-semibold text-purple-600">{right.title_hindi}</h3>
-                                            <p className="text-gray-700 mt-2">{right.description_hindi.slice(0, 100)}...</p>
-                                        </div>
-                                    )}
+                                                                        {expandedIndex === index && (
+                                                                                <div className="mt-4">
+                                                                                        <div className="flex items-center">
+                                                                                            <h3 className="text-lg font-semibold text-purple-600">{right.title_hindi}</h3>
+                                                                                            <button
+                                                                                                className="ml-2 text-purple-700 hover:text-purple-900 text-xl align-middle"
+                                                                                                onClick={() => speak(right.description_hindi, 'hi-IN')}
+                                                                                                aria-label={`Listen to ${right.title_hindi}`}
+                                                                                            >
+                                                                                                🔊
+                                                                                            </button>
+                                                                                        </div>
+                                                                                        <p className="text-gray-700 mt-2">{right.description_hindi.slice(0, 100)}...</p>
+                                                                                </div>
+                                                                        )}
                                 </motion.div>
                             ))}
                         </div>
