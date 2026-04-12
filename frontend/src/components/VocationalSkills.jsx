@@ -260,7 +260,7 @@ const VocationalSkills = ({ onBack }) => {
                     onClick={onBack}
                     className="mb-6 flex items-center text-pink-600 hover:text-pink-800 transition"
                 >
-                    <span className="mr-2">arrow_back</span>
+                    <span className="material-icons mr-2" aria-label="Back">arrow_back</span>
                     <span className="font-semibold">Back to Skills</span>
                 </motion.button>
                 <motion.div
