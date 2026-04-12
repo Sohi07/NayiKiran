@@ -189,6 +189,7 @@
 
 
 import { useState, useEffect, useRef } from "react";
+import { speak, startListening } from "../utils/speech";
 import { askGemini } from "../utils/api";
 import { FaPaperPlane } from "react-icons/fa";
 import Navbar from "../components/Navbar";
@@ -268,6 +269,15 @@ const Chat = () => {
                     }`}
                 >
                   {msg.text}
+                  {msg.role === "assistant" && (
+                    <button
+                      className="ml-2 text-purple-700 hover:text-purple-900 text-xl align-middle"
+                      onClick={() => speak(msg.text, 'en-IN')}
+                      aria-label="Listen to response"
+                    >
+                      🔊
+                    </button>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -294,8 +304,15 @@ const Chat = () => {
               placeholder="Type your question..."
               rows="2"
             />
+            <button
+              className="ml-2 bg-green-500 text-white p-3 rounded-lg shadow-md hover:bg-green-600 transition duration-300 flex items-center"
+              onClick={() => startListening(setMessage, 'en-IN')}
+              aria-label="Speak your question"
+            >
+              🎤
+            </button>
             <motion.button
-              className="ml-3 bg-purple-500 text-white p-3 rounded-lg shadow-md hover:bg-purple-600 transition duration-300 flex items-center"
+              className="ml-2 bg-purple-500 text-white p-3 rounded-lg shadow-md hover:bg-purple-600 transition duration-300 flex items-center"
               onClick={sendMessage}
               disabled={!message.trim()}
               whileTap={{ scale: 0.95 }}
