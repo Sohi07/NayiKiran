@@ -6,6 +6,15 @@ const VocationalSkills = ({ onBack }) => {
     const [selectedSkill, setSelectedSkill] = useState(null);
     const [completedSkills, setCompletedSkills] = useState([]);
 
+    // Helper function to extract YouTube video ID and generate thumbnail URL
+    const getYouTubeThumbnail = (url) => {
+        const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
+        if (videoId && videoId[1]) {
+            return `https://img.youtube.com/vi/${videoId[1]}/maxresdefault.jpg`;
+        }
+        return 'https://via.placeholder.com/320x180?text=Video+Thumbnail';
+    };
+
     const categories = [
         {
             id: 'beauty',
@@ -179,6 +188,68 @@ const VocationalSkills = ({ onBack }) => {
         { name: 'Police', number: '100' }
     ];
 
+    const youtubeResources = [
+        {
+            category: 'beauty',
+            title: 'Beauty & Wellness Learning',
+            videos: [
+                {
+                    title: 'Complete Mehendi Course for Beginners',
+                    url: 'https://www.youtube.com/watch?v=irts21wG7BE&list=PLa-8xUlYgFNe6_jT7z7ihwt7DL02GQp-v&index=1',
+                    level: 'Beginner'
+                },
+                {
+                    title: 'Professional Eyebrow Threading Tutorial',
+                    url: 'https://www.youtube.com/watch?v=_759Ahg-xYY&list=PL4RKvTB6TJp5I16tWb13Z7VGnGSPFz8vt&index=1',
+                    level: 'Beginner'
+                },
+                {
+                    title: 'Bridal Makeup Basics Step by Step',
+                    url: 'https://www.youtube.com/watch?v=ts3vSsb1RFA&list=PL4yH0rGfqpsTFN11bNL_sqMvm40WQszuT&index=1',
+                    level: 'Intermediate'
+                }
+            ]
+        },
+        {
+            category: 'handicrafts',
+            title: 'Handicrafts & Business Skills',
+            videos: [
+                {
+                    title: 'Candle Making Business from Home',
+                    url: 'https://www.youtube.com/watch?v=WDDS69_KGww',
+                    level: 'Beginner'
+                },
+                {
+                    title: 'Basic Tailoring for Beginners',
+                    url: 'https://www.youtube.com/watch?v=GrINJYtCGf0&list=PL0HLVzfOJRGnyvfFf_rFbxFLLDMJHXKy4&index=1',
+                    level: 'Beginner'
+                },
+                {
+                    title: 'Agarbatti Making Complete Guide',
+                    url: 'https://www.youtube.com/watch?v=LB1ujYuZADY',
+                    level: 'Beginner'
+                }
+            ]
+        },
+        {
+            category: 'services',
+            title: 'Quick Start Services',
+            videos: [
+                {
+                    title: 'How to Start Tiffin Service Business',
+                    url: 'https://www.youtube.com/watch?v=_50VPq8YpmE',
+                   
+                    level: 'Beginner'
+                },
+                {
+                    title: 'Professional Home Cleaning Techniques',
+                    url: 'https://www.youtube.com/watch?v=0rNMpFcebcc',
+                    level: 'Beginner'
+                }
+            ]
+        }
+    ];
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-pink-50 to-orange-50 p-4">
             <div className="max-w-6xl mx-auto">
@@ -218,6 +289,80 @@ const VocationalSkills = ({ onBack }) => {
                                 <div className="text-sm text-gray-600">{num.name}</div>
                                 <div className="font-bold text-red-600">{num.number}</div>
                             </div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* YouTube Learning Resources */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-8"
+                >
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                        Video Learning Resources
+                    </h2>
+                    <div className="space-y-6">
+                        {youtubeResources.map((resource) => (
+                            <motion.div
+                                key={resource.category}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="bg-white rounded-xl shadow-lg p-6"
+                            >
+                                <h3 className="text-xl font-bold text-gray-800 mb-4">
+                                    {resource.title}
+                                </h3>
+                                <div className="grid md:grid-cols-3 gap-4">
+                                    {resource.videos.map((video, idx) => (
+                                        <motion.div
+                                            key={idx}
+                                            whileHover={{ scale: 1.03 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="bg-gray-50 rounded-lg overflow-hidden cursor-pointer hover:shadow-md transition-shadow"
+                                            onClick={() => window.open(video.url, '_blank')}
+                                        >
+                                            <div className="relative">
+                                                <img
+                                                    src={getYouTubeThumbnail(video.url)}
+                                                    alt={video.title}
+                                                    className="w-full h-32 object-cover"
+                                                    onError={(e) => {
+                                                        e.target.src = 'https://via.placeholder.com/320x180?text=Video+Thumbnail';
+                                                    }}
+                                                />
+                                                <div className="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
+                                                    {video.duration}
+                                                </div>
+                                                <div className="absolute inset-0 bg-red-600 bg-opacity-0 hover:bg-opacity-20 transition-all flex items-center justify-center">
+                                                    <div className="bg-red-600 rounded-full p-2 opacity-0 hover:opacity-100 transition-opacity">
+                                                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M8 5v14l11-7z"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="p-3">
+                                                <h4 className="font-semibold text-sm text-gray-800 mb-1 line-clamp-2">
+                                                    {video.title}
+                                                </h4>
+                                                <div className="flex items-center justify-between">
+                                                    <span className={`text-xs px-2 py-1 rounded ${
+                                                        video.level === 'Beginner' 
+                                                            ? 'bg-green-100 text-green-700' 
+                                                            : 'bg-yellow-100 text-yellow-700'
+                                                    }`}>
+                                                        {video.level}
+                                                    </span>
+                                                    <span className="text-xs text-gray-500">
+                                                        {video.duration}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </motion.div>
                         ))}
                     </div>
                 </motion.div>
