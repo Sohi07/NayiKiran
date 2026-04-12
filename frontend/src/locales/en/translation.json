@@ -159,5 +159,16 @@
     "english": "English",
     "hindi": "Hindi",
     "current": "Current Language"
+  },
+  "navbar": {
+    "logoAlt": "Government Logo",
+    "helplineTitle": "Women Helpline Number",
+    "helplineNumber": "1800-11-9292",
+    "emergencyTitle": "For Emergency",
+    "emergencyNumber": "112",
+    "skillDevelopment": "Skill Development",
+    "jobDiscovery": "Job Discovery",
+    "chatbot": "Mano Sathi (Chatbot)",
+    "successStories": "Success Stories"
   }
 }
