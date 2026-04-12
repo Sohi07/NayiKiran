@@ -122,7 +122,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useLogout from "../hooks/useLogout";
 import { useAuthContext } from "../context/AuthContext";
-import image from "../assets/image.png";
+import image from "../assets/image.jpeg";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 

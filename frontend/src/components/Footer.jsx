@@ -35,7 +35,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <p className='font-semibold'>&copy; 2025 Ujjwal उड़ान . All Rights Reserved.</p>
+        <p className='font-semibold'>&copy; 2026 Nayi Kiran. All Rights Reserved.</p>
       </div>
     </footer>
   );
