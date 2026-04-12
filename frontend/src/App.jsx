@@ -11,10 +11,6 @@ import { useAuthContext } from './context/AuthContext';
 import './i18n/i18n';
 import Skill from './pages/skill';
 import SuccessStoriesPage from './pages/SuccessStoriesPage';
-import LegalDefense from './components/LegalDefense';
-import PoliceHarassmentModule from './components/PoliceHarassmentModule';
-import EmergencyActionModule from './components/EmergencyActionModule';
-import InteractiveScenario from './components/InteractiveScenario';
 import ChildcareProtection from './components/ChildcareProtection';
 import SchoolEnrollment from './components/SchoolEnrollment';
 import GovernmentSchemes from './components/GovernmentSchemes';
@@ -44,12 +40,6 @@ const App = () => {
         <Route path="/forum" element={authUser ? <CommunityForum /> : <Navigate to="/login" />} />
         <Route path="/legal" element={<LegalRights /> }/>
         <Route path="/skill" element={authUser ? <Skill /> : <Navigate to="/login" />} />
-        
-        {/* Legal Defense Course Routes */}
-        <Route path="/legal-defense" element={authUser ? <LegalDefense /> : <Navigate to="/login" />} />
-        <Route path="/police-harassment" element={authUser ? <PoliceHarassmentModule /> : <Navigate to="/login" />} />
-        <Route path="/emergency-action" element={authUser ? <EmergencyActionModule /> : <Navigate to="/login" />} />
-        <Route path="/interactive-scenario/:moduleId" element={authUser ? <InteractiveScenario /> : <Navigate to="/login" />} />
         
         {/* Childcare Protection Routes */}
         <Route path="/childcare-protection" element={authUser ? <ChildcareProtectionLanding /> : <Navigate to="/login" />} />
