@@ -36,13 +36,13 @@ app.use("/api/childcare-protection", childcareProtectionRoutes);
 app.use("/api/schools", schoolRoutes);
 app.use("/api/documents", documentRoutes);
 
-
+/*
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 app.get("*",(req,res)=>{
   res.sendFile(path.join(__dirname,"frontend","dist","index.html"));
 })
-
+*/
 
 
 // Start the server
