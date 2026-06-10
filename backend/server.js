@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
@@ -20,9 +21,21 @@ import connectToMongoDB from "./db/connectToMongoDB.js";
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://nayi-kiran-ruby.vercel.app"
+    ],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 
 // Routes
