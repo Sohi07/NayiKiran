@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/gemini";
+const API_URL = `${import.meta.env.VITE_BACKEND_API_URL}/api/gemini`;
 
 export const askGemini = async (userMessage) => {
     try {

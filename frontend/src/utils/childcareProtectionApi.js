@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "/api/childcare-protection";
+const API_BASE_URL = `${import.meta.env.VITE_BACKEND_API_URL}/api/childcare-protection`;
 
 // Get all childcare protection modules
 export const getAllChildcareProtectionModules = async () => {

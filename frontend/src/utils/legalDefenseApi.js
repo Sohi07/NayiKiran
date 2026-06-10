@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "/api/legal-defense";
+const API_BASE_URL = `${import.meta.env.VITE_BACKEND_API_URL}/api/legal-defense`;
 
 // Get all legal defense modules
 export const getAllLegalDefenseModules = async () => {

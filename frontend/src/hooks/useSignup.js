@@ -11,7 +11,7 @@ const useSignup = () => {
         if (!success) return;
 
         try {
-            const res = await fetch("/api/auth/signup", {
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/api/auth/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ fullname, username, password, confirmPassword }),

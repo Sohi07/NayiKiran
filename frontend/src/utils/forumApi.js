@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-const API_BASE_URL = "/api/posts";
+const API_BASE_URL = `${import.meta.env.VITE_BACKEND_API_URL}/api/posts`;
 console.log(`${API_BASE_URL}/`);    
 
 export const fetchPosts = async () => {
@@ -11,7 +11,7 @@ export const fetchPosts = async () => {
 
 export const createPost = async (title, content) => {
     try {
-      const response = await axios.post("/api/posts/create", { title, content });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/api/posts/create`, { title, content });
       return response.data;
     } catch (error) {
       console.error("Error creating post:", error.message);
