@@ -26,10 +26,10 @@ const generateTokenAndSetCookie = (userId, res) => {
       console.log('Generated token:', token);
   
       res.cookie('jwt', token, {
-        maxAge: 15 * 24 * 60 * 60 * 1000,
-        httpOnly: true, // prevent XSS attacks
-        sameSite: 'strict',
-        secure: process.env.NODE_ENV === 'production', // only secure in production
+  maxAge: 15 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
       });
       console.log('Token set in cookie');
     } catch (error) {

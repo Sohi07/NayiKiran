@@ -11,7 +11,11 @@ export const fetchPosts = async () => {
 
 export const createPost = async (title, content) => {
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/api/posts/create`, { title, content });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/api/posts/create`, { title, content },
+      {
+        withCredentials: true
+      });
+      
       return response.data;
     } catch (error) {
       console.error("Error creating post:", error.message);
@@ -21,6 +25,8 @@ export const createPost = async (title, content) => {
 
 export const addComment = async (postId, content) => {
     const response = await axios.post(`${API_BASE_URL}/comment`, { postId, content }, 
-    );
+    {
+      withCredentials: true
+    });
     return response.data;
 };

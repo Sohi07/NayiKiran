@@ -5,7 +5,11 @@ const API_BASE_URL = `${import.meta.env.VITE_BACKEND_API_URL}/api/legal-defense`
 // Get all legal defense modules
 export const getAllLegalDefenseModules = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/`);
+        const response = await axios.get(`${API_BASE_URL}/`,
+            {
+                withCredentials: true
+            }
+        );
         return response.data;
     } catch (error) {
         console.error("Error fetching legal defense modules:", error.message);
@@ -16,7 +20,9 @@ export const getAllLegalDefenseModules = async () => {
 // Get modules by category
 export const getModulesByCategory = async (category) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/category/${category}`);
+        const response = await axios.get(`${API_BASE_URL}/category/${category}`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching modules by category:", error.message);
@@ -27,7 +33,9 @@ export const getModulesByCategory = async (category) => {
 // Get specific module by ID
 export const getModuleById = async (id) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/${id}`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching module:", error.message);
@@ -38,7 +46,9 @@ export const getModuleById = async (id) => {
 // Get emergency helplines
 export const getEmergencyHelplines = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/emergency/helplines`);
+        const response = await axios.get(`${API_BASE_URL}/emergency/helplines`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching emergency helplines:", error.message);
@@ -49,7 +59,9 @@ export const getEmergencyHelplines = async () => {
 // Get police harassment steps
 export const getPoliceHarassmentSteps = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/police/steps`);
+        const response = await axios.get(`${API_BASE_URL}/police/steps`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching police harassment steps:", error.message);
@@ -60,7 +72,9 @@ export const getPoliceHarassmentSteps = async () => {
 // Search modules
 export const searchModules = async (query) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/search/${query}`);
+        const response = await axios.get(`${API_BASE_URL}/search/${query}`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error searching modules:", error.message);
@@ -71,7 +85,9 @@ export const searchModules = async (query) => {
 // Create new module (admin only)
 export const createLegalDefenseModule = async (moduleData) => {
     try {
-        const response = await axios.post(`${API_BASE_URL}/`, moduleData);
+        const response = await axios.post(`${API_BASE_URL}/`, moduleData, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error creating module:", error.message);

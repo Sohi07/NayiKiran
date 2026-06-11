@@ -5,7 +5,9 @@ const API_BASE_URL = `${import.meta.env.VITE_BACKEND_API_URL}/api/childcare-prot
 // Get all childcare protection modules
 export const getAllChildcareProtectionModules = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/`);
+        const response = await axios.get(`${API_BASE_URL}/`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching childcare protection modules:", error.message);
@@ -16,7 +18,9 @@ export const getAllChildcareProtectionModules = async () => {
 // Get modules by category
 export const getModulesByCategory = async (category) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/category/${category}`);
+        const response = await axios.get(`${API_BASE_URL}/category/${category}`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching modules by category:", error.message);
@@ -27,7 +31,9 @@ export const getModulesByCategory = async (category) => {
 // Get specific module by ID
 export const getModuleById = async (id) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/${id}`);
+        const response = await axios.get(`${API_BASE_URL}/${id}`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching module:", error.message);
@@ -38,7 +44,9 @@ export const getModuleById = async (id) => {
 // Get school enrollment guide
 export const getSchoolEnrollmentGuide = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/school-enrollment`);
+        const response = await axios.get(`${API_BASE_URL}/school-enrollment`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching school enrollment guide:", error.message);
@@ -49,7 +57,9 @@ export const getSchoolEnrollmentGuide = async () => {
 // Get government schemes
 export const getGovernmentSchemes = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/government-schemes`);
+        const response = await axios.get(`${API_BASE_URL}/government-schemes`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching government schemes:", error.message);
@@ -60,7 +70,9 @@ export const getGovernmentSchemes = async () => {
 // Get child rights legal framework
 export const getChildRightsFramework = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/child-rights`);
+        const response = await axios.get(`${API_BASE_URL}/child-rights`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching child rights framework:", error.message);
@@ -71,7 +83,9 @@ export const getChildRightsFramework = async () => {
 // Get exploitation prevention resources
 export const getExploitationPrevention = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/exploitation-prevention`);
+        const response = await axios.get(`${API_BASE_URL}/exploitation-prevention`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching exploitation prevention:", error.message);
@@ -82,7 +96,9 @@ export const getExploitationPrevention = async () => {
 // Search modules
 export const searchModules = async (query) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}/search/${query}`);
+        const response = await axios.get(`${API_BASE_URL}/search/${query}`, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error searching modules:", error.message);
@@ -93,7 +109,9 @@ export const searchModules = async (query) => {
 // Create new module (admin only)
 export const createChildcareProtectionModule = async (moduleData) => {
     try {
-        const response = await axios.post(`${API_BASE_URL}/`, moduleData);
+        const response = await axios.post(`${API_BASE_URL}/`, moduleData, {
+            withCredentials: true
+        });
         return response.data;
     } catch (error) {
         console.error("Error creating module:", error.message);
