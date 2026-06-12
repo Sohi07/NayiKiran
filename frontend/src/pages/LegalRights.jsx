@@ -103,11 +103,15 @@ const LegalRights = () => {
     const [expandedIndex, setExpandedIndex] = useState(null);
 
     useEffect(() => {
-        axios.get("/api/rights")
-            .then(response => setRights(response.data))
-            .catch(error => console.error("Error fetching rights:", error));
-    }, []);
-
+    axios.get(
+        `${import.meta.env.VITE_BACKEND_API_URL}/api/rights`,
+        {
+            withCredentials: true,
+        }
+    )
+    .then(response => setRights(response.data))
+    .catch(error => console.error("Error fetching rights:", error));
+}, []);
     const toggleCard = (index) => {
         setExpandedIndex(expandedIndex === index ? null : index);
     };
